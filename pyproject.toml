@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "musicmeta"
+version = "0.1.0"
+description = ""
+authors = ["tgadf <tgadfort@gmail.com>"]
+readme = "README.md"
+packages = [{include = "musicmeta", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mutagen = "^1.46.0"
+pytest = "^7.4.0"
+jupyter = "^1.0.0"
+notebook = "^7.0.2"
+jupyter-server-proxy = "^4.0.0"
+jupyterlab = "^4.0.5"
+jupyter-contrib-nbextensions = "^0.7.0"
+poethepoet = "^0.22.0"
+
+[tool.poe.tasks]
+play.script = "musicmeta.play:play"
+mid.script = "musicmeta.mid:mid"
+fixdir.script = "musicmeta.fixdir:fixdir"
+discno.script = "musicmeta.discno:discno"
+albumname.script = "musicmeta.albumname:albumname"
+greet = "echo Hello `pwd`"
+
+#[tool.poe.tasks.build]
+#cmd = "mkdir -p build/assets"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
