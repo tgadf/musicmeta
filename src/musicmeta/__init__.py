@@ -7,6 +7,7 @@ from .mid import *
 # directory
 from .fixdir import *
 from .discno import *
+from .albumname import *
 
 # test
 from .play import *

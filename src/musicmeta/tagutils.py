@@ -38,7 +38,7 @@ def getWalkMusicFiles(dirval: str) -> 'dict':
         rootFiles = [FileInfo(rootDir).join(ifile) for ifile in files]
         mufiles = getMusicFiles(rootFiles)
         if len(mufiles) > 0:
-            walkFiles[rootDir] = mufiles
+            walkFiles[rootDir.path] = mufiles
 
     return walkFiles
 
@@ -49,7 +49,7 @@ def getWalkMusicFiles(dirval: str) -> 'dict':
 def getMusicTags(files: list, checkType: bool = False) -> 'dict':
     assert isinstance(files, list), "files [{type(files)}] must be a list"
     mufiles = getMusicFiles(files) if checkType is True else files
-    retval = {finfo: MusicTag(finfo).mtag for finfo in mufiles}
+    retval = {finfo.path: MusicTag(finfo).mtag for finfo in mufiles}
     assert all(retval.values()), f"Found a non MusicTag: {retval}"
     return retval
 
